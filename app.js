@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://192.168.1.7:27017/my_db', { useNewUrlParser: true });
  mongoose.connection.once('open',()=>{
      console.log("connected to database")
- })
+ });
 app.use(mount('/graphql',graphqlHTTP({
  schema,
  graphiql: true
