@@ -170,6 +170,28 @@ const Muatation = new GraphQLObjectType({
             resolve(parent,args){
                 return Author.findOneAndUpdate({id:Author.id},{name:args.name,age:args.age});
             }
+        },
+         getBook:{
+            type:BookType,
+            args:{
+                id:{type:GraphQLID},
+                name:{type:GraphQLString},
+                genre:{type:GraphQLString}
+            },
+            resolve(present,args){
+                return Book.findById(args.id);
+            }
+        },
+        getAuthor:{
+            type:AuthorType,
+            args:{
+                id:{type:GraphQLID},
+                name:{type:GraphQLString},
+                age:{type:GraphQLInt}
+            },
+            resolve(present,args){
+                return Author.findById(args.id);
+            }
         }
     }
 })
